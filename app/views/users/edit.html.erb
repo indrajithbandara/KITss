@@ -3,6 +3,12 @@
 
 <div class="row">
   <div class="span6 offset3">
+    <div id="gravatar-form">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails">change avatar</a>
+    </div>
+    <hr>
+
   <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -21,7 +27,9 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+
+    <hr>
+
+    <%= link_to "Connect with LinkedIn", linkedin_auth_path %>
   </div>
 </div>
