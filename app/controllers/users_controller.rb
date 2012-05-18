@@ -14,12 +14,24 @@ class UsersController < ApplicationController
   end
 
   def new
+    token = params[:token]
+    if token.nil?
+      return redirect_to membership_path
+    else
+      @invite = Admin::Invite.find_by_token(token)
+      if @invite.nil?
+        flash[:error] = "Invalid invite link"
+        return redirect_to root_path
+      end
+    end
+    @inviter = @invite.inviter
     @user = User.new
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
+      Admin::Invite.find_by_token(params[:token]).destroy
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
