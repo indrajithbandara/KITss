@@ -1,4 +1,4 @@
-class Admin::InviteController < AdminAreaController
+class Admin::InvitesController < AdminAreaController
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   def index
     @title = "Invite new users"

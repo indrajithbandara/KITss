@@ -18,6 +18,12 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :headline, "What are you working on?" %>
+      <%= f.text_field :headline %>
+
+      <%= f.label :university_headline, "What were you at the university?" %>
+      <%= f.text_field :university_headline %>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 
@@ -30,6 +36,12 @@
 
     <hr>
 
-    <%= link_to "Connect with LinkedIn", linkedin_auth_path %>
+
+    
+    <% if current_user.linkedin_token %>
+      <%= link_to "Disconnect from LinkedIn", linkedin_register_path %>
+    <% else %>
+      <%= link_to "Connect with LinkedIn", linkedin_deregister_path %>
+    <% end %>
   </div>
 </div>

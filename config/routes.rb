@@ -14,12 +14,11 @@ SampleApp::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/linkedin/auth', to: 'linkedin_auth#index'
-  match '/linkedin/callback', to: 'linkedin_auth#callback'
+  match '/linkedin/register', to: 'users/linkedin_auth#register'
+  match '/linkedin/callback', to: 'users/linkedin_auth#callback'
 
   match '/admin', to: 'admin#index'
-  match '/admin/invite', to: 'admin/invite#index'
-  match '/admin/send_invites', to: 'admin/invite#send_invites'
+  match '/admin/invite', to: 'admin/invites#index'
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
