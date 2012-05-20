@@ -16,6 +16,7 @@ SampleApp::Application.routes.draw do
   
   match '/linkedin/connect', to: 'users/linkedin_auth#connect'
   match '/linkedin/callback_register', to: 'users/linkedin_auth#callback_register'
+  match '/linkedin/callback_login', to: 'users/linkedin_auth#callback_login'
   match '/linkedin/unregister', to: 'users/linkedin_auth#unregister'
 
   match '/admin', to: 'admin#index'

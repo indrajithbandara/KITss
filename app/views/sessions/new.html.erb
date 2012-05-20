@@ -14,6 +14,8 @@
       <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
     <% end %>
 
+    <p><%= link_to image_tag("https://developer.linkedin.com/sites/default/files/js-signin.png"), linkedin_connect_path(:act => 'login') %></p>
+
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>

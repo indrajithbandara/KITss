@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :headline, :university_headline, :linkedin_token, :linkedin_secret
+  attr_accessible :name, :email, :password, :password_confirmation, :headline, :university_headline, :linkedin_id, :linkedin_token, :linkedin_secret
   has_secure_password
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
