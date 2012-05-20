@@ -6,6 +6,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
+    <%= yield(:scripts) %>
   </head>
   <body>
     <%= render 'layouts/header' %>

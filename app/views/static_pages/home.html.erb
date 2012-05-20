@@ -17,15 +17,41 @@
     </div>
   </div>
 <% else %>
-  <div class="center hero-unit">
-    <h1>Keep in Touch<br>
-      Simple and Stupid</h1>
-    
-    <h2>Keep calm and code on</h2>
-
-    <%= link_to "Sign up now!", signup_path, 
-                                class: "btn btn-large btn-primary" %>
+  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+<div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item">
+      <%= image_tag "homepage/pic1.jpg" %>
+      <div class="carousel-caption">
+        <h2>Do you remember your old geek friends from the university ?!?</h2>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "homepage/pic2.jpg" %>
+      <div class="carousel-caption">
+        <h2>Yeah, I know... time passed by and you forgot them</h2>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "homepage/pic3.jpg" %>
+      <div class="carousel-caption">
+        <h2>But what if they are building the next giant company, and they need your help</h2>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "homepage/pic4.jpg" %>
+      <div class="carousel-caption">
+        <h2><%= link_to "Register", signup_path, class: "btn btn-large btn-primary" %> 
+                to keep in touch with them, in a simple and friendly manner</h2>
+      </div>
+    </div>
   </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
 
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
