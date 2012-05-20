@@ -22,7 +22,9 @@ class Admin::InvitesController < AdminAreaController
         invites = Admin::Invite
         tosend.each do |email|
           # Add to database
+          if not invites.exists?(:email => email)
             invites.new(:email => email, :inviter_id => current_user).save!
+          end
           # TODO Send email
         end
 
