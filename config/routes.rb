@@ -14,8 +14,9 @@ SampleApp::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/linkedin/register', to: 'users/linkedin_auth#register'
-  match '/linkedin/callback', to: 'users/linkedin_auth#callback'
+  match '/linkedin/connect', to: 'users/linkedin_auth#connect'
+  match '/linkedin/callback_register', to: 'users/linkedin_auth#callback_register'
+  match '/linkedin/unregister', to: 'users/linkedin_auth#unregister'
 
   match '/admin', to: 'admin#index'
   match '/admin/invite', to: 'admin/invites#index'

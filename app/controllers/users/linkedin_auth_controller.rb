@@ -3,8 +3,13 @@ require 'linkedin'
 class Users::LinkedinAuthController < ApplicationController
   before_filter :create_client
 
-  def register
-    request_token = @client.request_token(:oauth_callback => linkedin_connect_url)
+  def connect
+    case params[:act]
+      when 'register'
+        request_token = @client.request_token(:oauth_callback => linkedin_callback_register_url)
+      when 'deregister'
+        request_token = @client.request_token(:oauth_callback => linkedin_callback_deregister_url)
+    end
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     session[:first]
@@ -12,7 +17,20 @@ class Users::LinkedinAuthController < ApplicationController
     redirect_to @client.request_token.authorize_url
   end
 
-  def callback
+  def unregister
+    @user = current_user
+
+    if ( @user.update_attribute(:linkedin_token, "") and
+         @user.update_attribute(:linkedin_secret, "") and sign_in @user )
+      flash[:success] = "You have successfully disconnected from your LinkedIn account"
+    else
+      flash[:error] = "There was an error"
+    end
+
+    redirect_to edit_user_path(@user.id)
+  end
+
+  def callback_register
     @user = User.find(current_user.id)
 
     if session[:atoken].nil?

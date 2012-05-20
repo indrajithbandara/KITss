@@ -38,10 +38,10 @@
 
 
     
-    <% if current_user.linkedin_token %>
-      <%= link_to "Disconnect from LinkedIn", linkedin_register_path %>
+    <% if current_user.linkedin_token and not current_user.linkedin_token.empty? %>
+      <%= link_to "Disconnect from LinkedIn", linkedin_unregister_path %>
     <% else %>
-      <%= link_to "Connect with LinkedIn", linkedin_deregister_path %>
+      <%= link_to "Connect with LinkedIn", linkedin_connect_path(:act => 'register') %>
     <% end %>
   </div>
 </div>
