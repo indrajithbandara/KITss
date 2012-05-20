@@ -3,7 +3,7 @@ class Admin::Invite < ActiveRecord::Base
 
   belongs_to :inviter, :class_name => "User"
 
-  validates :inviter_id, :foreign_key, :uniqueness => true, :presence => true
+  validates :inviter_id, :uniqueness => true, :presence => true
   validates :token, presence: true
   validates :email, presence: true
 
