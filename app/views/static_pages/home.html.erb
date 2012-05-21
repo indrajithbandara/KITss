@@ -17,9 +17,12 @@
     </div>
   </div>
 <% else %>
-  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
-  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
-  <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag "bootstrap-transition.js" %>
+  <%= javascript_include_tag "bootstrap-carousel.js" %>
+<% end %>
+
 <div id="myCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
