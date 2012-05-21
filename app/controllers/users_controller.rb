@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     if @user.save
       # Admin::Invite.find_by_token(params[:token]).destroy
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the Keep in Touch!"
+      flash[:notice] = "<a href=\"#{url_for(edit_user_path(@user.id))}\">Connect</a> with your LinkedIn account, to update your headline and sign in easily.".html_safe
       redirect_to @user
     else
       render 'new'
